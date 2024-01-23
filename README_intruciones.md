@@ -26,3 +26,28 @@ DB_PASSWORD="Contraseña"
 ```
 
 parte de persistencia
+- database/migrations/2020_05_12_000000_create_users_table.php
+```php 
+Schema::create('publicacions', function (Blueprint $table) {
+            $table->id();
+            $table->string('title');        // añadido
+            $table->string('description'); // añadido
+            $table->timestamps();
+        });
+```
+
+- app/Models/Publicacion.php
+```php 
+use HasFactory;
+
+    protected $fillable = [ // añadido
+        "title",            // añadido
+        "description",      // añadido
+    ];
+```
+
+ejecutar la migracion de todos los elemntos 
+```bash
+php artisan migrate
+```
+
